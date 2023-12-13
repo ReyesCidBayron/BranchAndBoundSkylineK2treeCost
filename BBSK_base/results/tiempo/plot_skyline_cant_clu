@@ -1,0 +1,26 @@
+set title 'Datos clusterizados'
+reset
+
+set terminal png size 800,600
+set grid
+set key out horiz
+
+set xrange [0:52]
+set xtics 10
+set log x
+set xlabel "Number of points (in millions)" font ",18"
+set yrange [0:200]
+set ylabel "Time [µs]" font ",18"
+
+set key font ",16"
+set tics font ",14"
+
+set style line 1 linecolor rgb "blue" dashtype 8 linewidth 1.5 pointtype 4 pointsize 1.5
+set style line 2 linecolor rgb "red" dashtype 8 linewidth 1.5 pointtype 8 pointsize 1.5
+set style line 3 linecolor rgb "dark-green" dashtype 8 linewidth 1.5 pointtype 12 pointsize 1.5
+set style line 4 linecolor rgb "dark-violet" dashtype 8 linewidth 1.5 pointtype 7 pointsize 1.5
+set style line 5 linecolor rgb "gray0" dashtype 8 linewidth 1.5 pointtype 5 pointsize 1.5
+set style line 6 linecolor rgb "dark-chartreuse" dashtype 8 linewidth 1.5 pointtype 9 pointsize 1.5
+
+set output 'graf_skyline_cant_clu.png'
+plot 'data_skyline_cant_clu.txt' u 1:3 w lp t 'BBSK Manhattan' ls 1, '' u 1:4 w lp t 'BBSK Euclidean' ls 2, '' u 1:5 w lp t 'Skyline X' ls 3
